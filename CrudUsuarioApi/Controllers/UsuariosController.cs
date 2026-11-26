@@ -59,8 +59,8 @@ namespace CrudUsuarioApi.Controllers
         }
 
         // PUT: api/usuarios/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> PutUsuario([FromRoute] int id, [FromBody] Usuario usuario)
         {
             if (id != usuario.Id)
             {

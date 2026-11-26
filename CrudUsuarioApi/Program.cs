@@ -11,7 +11,13 @@ namespace CrudUsuarioApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+    {
+                // Diz ao serializador para ignorar os ciclos de navegação (Usuário <-> Endereço)
+                // e continuar convertendo para JSON sem travar.
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+            });
 
             // Registra o AppDbContext e configura o uso do MySQL (Pomelo)
             builder.Services.AddDbContext<AppDbContext>(options =>
