@@ -1,5 +1,6 @@
 ﻿using CrudUsuarioApi.Data;
 using CrudUsuarioApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace CrudUsuarioApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")] // A rota final será /api/usuarios
+    [Authorize]
     public class UsuariosController : ControllerBase
     {
         // 1. Injeção de Dependência do Banco de Dados
